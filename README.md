@@ -41,4 +41,4 @@ queensAttack has the following parameters:
 
 **How to run it:**
 - Requirements: Python 3.6 and add it to env vars
-- Go to the terminal and write: $ queen.py <sample file>  --> example: $ queen.py sample.txt
+- Go to the terminal and write: $ queen.py sample.txt
