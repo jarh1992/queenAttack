@@ -7,11 +7,11 @@ A queen is standing on an n x n  chessboard. The chess board's rows are numbered
 
 The queen is standing at position (rq, cq) . In a single move, she can attack any square in any of the eight directions (left, right, up, down, and the four diagonals). In the diagram below, the green circles denote all the cells the queen can attack from (4,4):
 
-![alt text](https://raw.githubusercontent.com/jarh1992/queenAttack/master/image001.png)
+![alt text](https://raw.githubusercontent.com/jarh1992/queenAttack/master/image001.png =250x250)
 
 There are obstacles on the chessboard, each preventing the queen from attacking any square beyond it on that path. For example, an obstacle at location (3,5)  in the diagram above prevents the queen from attacking cells (3,5), (2,6), (1,7)
 
-![alt text](https://raw.githubusercontent.com/jarh1992/queenAttack/master/image002.png)
+![alt text](https://raw.githubusercontent.com/jarh1992/queenAttack/master/image002.png =250x250)
 
 Given the queen's position and the locations of all the obstacles, find and print the number of squares the queen can attack from her position at (rq, cq) . In the board above, there are 24 such squares.
 
