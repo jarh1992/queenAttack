@@ -22,6 +22,23 @@ def validations(n, k, r_q, c_q, obstacles):
         return True
 
 
+def movement(diag, board):
+    """
+    diag: diag[0]
+    board: board[r][c]
+    """
+    if diag[1] != 2:
+        if board == ' ':
+            diag[0] += 1
+        elif board == '&':
+            diag[1] = 1
+        else:
+            if diag[1] == 0:
+                diag[0] = 0
+            else:
+                diag[1] = 2
+
+
 def queensAttack(n, k, r_q, c_q, obstacles):
     # intializing the board
     # populate with ' ': void; '&': queen 'X': obstacle;
@@ -37,59 +54,17 @@ def queensAttack(n, k, r_q, c_q, obstacles):
         # to diagonals
         factor = r_q - i
         if c_q - factor > 0 and c_q - factor < n + 1:
-            if diag[0][1] != 2:
-                if board[i][c_q - factor] == ' ':
-                    diag[0][0] += 1
-                    board[i][c_q - factor] = 'O'
-                elif board[i][c_q - factor] == '&':
-                    diag[0][1] = 1
-                else:
-                    if diag[0][1] == 0:
-                        diag[0][0] = 0
-                    else:
-                        diag[0][1] = 2
+            movement(diag[0], board[i][c_q - factor])
 
         if c_q + factor > 0 and c_q + factor < n + 1:
-            if diag[1][1] != 2:
-                if board[i][c_q + factor] == ' ':
-                    diag[1][0] += 1
-                    board[i][c_q + factor] = 'O'
-                elif board[i][c_q + factor] == '&':
-                    diag[1][1] = 1
-                else:
-                    if diag[1][1] == 0:
-                        diag[1][0] = 0
-                    else:
-                        diag[1][1] = 2
+            movement(diag[1], board[i][c_q + factor])
+
         # to lines
         if i != r_q:
-            if line[0][1] != 2:
-                if board[i][c_q] == ' ':
-                    line[0][0] += 1
-                    board[i][c_q] = 'O'
-                elif board[i][c_q] == '&':
-                    line[0][1] = 1
-                else:
-                    if line[0][1] == 0:
-                        line[0][0] = 0
-                    else:
-                        line[0][1] = 2
+            movement(line[0], board[i][c_q])
         else:
             for j in range(1, n + 1):
-                if line[1][1] != 2:
-                    if board[i][j] == ' ':
-                        line[1][0] += 1
-                        board[i][j] = 'O'
-                    elif board[i][j] == '&':
-                        line[1][1] = 1
-                    else:
-                        if line[1][1] == 0:
-                            line[1][0] = 0
-                        else:
-                            line[1][1] = 2
-
-    for i in reversed(board):
-        print(i)
+                movement(line[1], board[i][j])
 
     sum = diag[0][0] + diag[1][0] + line[0][0] + line[1][0]
     return sum
@@ -118,6 +93,6 @@ if __name__ == "__main__":
             lines[1][1],
             lines[2:]
         )
-        print('movimientos: ', moves)
+        print(moves)
     else:
         print(result)
